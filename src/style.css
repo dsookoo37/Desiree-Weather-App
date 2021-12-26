@@ -1,0 +1,101 @@
+body {
+  font-family: "Josefin Sans", sans-serif;
+}
+p {
+  padding: 0;
+  margin: 0 auto;
+}
+h1,
+h2,
+h3 {
+  text-align: center;
+  margin: 30px;
+}
+h1 {
+  font-size: 60px;
+  line-height: 0;
+  padding: 20px 0 0 0;
+}
+h2 {
+  font-size: 70px;
+}
+
+.temperatureUnits {
+  font-size: 20px;
+  position: relative;
+  left: -80px;
+  top: -10px;
+  padding: 0px;
+}
+
+.searchCity {
+  border-radius: 4px;
+  background-color: rgba(164, 195, 216, 0.4);
+}
+.date {
+  position: relative;
+  bottom: -5px;
+  padding: 5px 0 0 0;
+}
+.time {
+  position: relative;
+  bottom: 25px;
+  left: 400px;
+  padding: 5px 0 0 0;
+}
+
+.currentTemp {
+  position: relative;
+  right: 60px;
+  font-size: 100px;
+}
+.displayWeatherDetails {
+  position: relative;
+  left: 270px;
+  bottom: 220px;
+  height: 0px;
+}
+.allDays {
+  margin: 3px 0 0 0;
+  position: relative;
+  bottom: 18px;
+}
+.daycontainer {
+  border: 2px solid #aaa9a9;
+  border-radius: 10px;
+  background-color: rgb(184, 179, 204, 0.5);
+  text-align: center;
+  margin: 0 1px;
+}
+.weatherbackground {
+  background-image: url("../images/cloudysky.png");
+  display: block;
+  margin: 0 auto;
+}
+.weather-app-container {
+  margin: 100px;
+  width: 500px;
+  height: 490px;
+  border-radius: 10px;
+}
+.citySearchBar {
+  width: 390px;
+  border-radius: 4px;
+  display: right;
+  margin: 0 auto;
+  background-color: rgb(255, 255, 255, 0.7);
+}
+.cityDetailsContainer {
+  position: relative;
+  bottom: 20px;
+  border: 2px solid #aaa9a9;
+  border-radius: 15px;
+  width: 450px;
+  display: block;
+  margin: 2px auto;
+  background-color: rgb(184, 179, 204, 0.5);
+}
+h1 {
+  text-align: center;
+  margin: 30px;
+}
