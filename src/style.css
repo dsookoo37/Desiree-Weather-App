@@ -22,6 +22,9 @@ h2 {
   font-size: 70px;
 }
 
+#weather-description {
+  text-transform: capitalize;
+}
 .signature {
   text-align: center;
   display: block;
@@ -33,7 +36,7 @@ h2 {
 .temperatureUnits {
   font-size: 16px;
   position: relative;
-  left: -25px;
+  left: -90px;
   top: -5px;
   padding: 0px;
 }
@@ -66,7 +69,7 @@ h2 {
 }
 .displayWeatherDetails {
   position: relative;
-  left: 240px;
+  left: 250px;
   bottom: 220px;
   height: 0px;
 }

@@ -95,6 +95,8 @@ function getWeather(response) {
   humidityResult.innerHTML = Math.round(response.data.main.humidity);
   let windResult = document.querySelector("#wind");
   windResult.innerHTML = Math.round(response.data.wind.speed);
+  let descriptionElement = document.querySelector("#weather-description");
+  descriptionElement.innerHTML = response.data.weather[0].description;
   changeWeatherTheme(response);
 }
 
