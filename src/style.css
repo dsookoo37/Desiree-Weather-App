@@ -22,11 +22,19 @@ h2 {
   font-size: 70px;
 }
 
+.signature {
+  text-align: center;
+  display: block;
+  padding: 50px;
+}
+.container {
+  margin-top: 50px;
+}
 .temperatureUnits {
   font-size: 20px;
   position: relative;
-  left: -80px;
-  top: -10px;
+  left: -40px;
+  top: -5px;
   padding: 0px;
 }
 
@@ -52,13 +60,13 @@ h2 {
 
 .currentTemp {
   position: relative;
-  right: 60px;
+  right: 40px;
   font-size: 100px;
   color: black;
 }
 .displayWeatherDetails {
   position: relative;
-  left: 270px;
+  left: 240px;
   bottom: 220px;
   height: 0px;
 }
@@ -130,7 +138,7 @@ h2 {
   background-image: url("../images/rain.jpg");
 }
 .rainBoxAndSeachCityButtonTheme {
-  background-color: rgba(158, 227, 255, 0.808);
+  background-color: rgba(158, 228, 255, 0.527);
   color: rgb(9, 70, 75);
 }
 .snowBackground {
