@@ -189,6 +189,9 @@ function getCurrentTime(now) {
   ];
 
   let currentHour = hours[hour];
+  if (currentHour < 10) {
+    currentHour = `0${currentHour}`;
+  }
   return `${currentHour}:${minutes} ${amPm()}`;
 }
 
