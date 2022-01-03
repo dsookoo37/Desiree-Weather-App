@@ -1,4 +1,61 @@
+function changeWeatherTheme(response) {
+  let searchCityButton = document.querySelector("#search-city-button");
+  let dateLine = document.querySelector("#current-date");
+  let timeLine = document.querySelector("#time");
+  let cityBox = document.querySelector("#city-details-box");
+  let dayContainers = document.querySelector("#day-containers");
+  let appBackground = document.querySelector("#weather-app-container");
+  weatherConditionResponse = response.data.weather[0].main;
+  weatherConditionResponse.toLowerCase();
+  if (
+    (weatherConditionResponse = "drizzle") ||
+    (weatherConditionResponse = "rain")
+  ) {
+    appBackground.classList.add("rainBackground");
+    searchCityButton.classList.add("rainBoxAndSeachCityButtonTheme");
+    dateLine.classList.add("date");
+    timeLine.classList.add("time");
+    cityBox.classList.add("rainBoxAndSeachCityButtonTheme");
+  } else if ((weatherConditionResponse = "thunderstorm")) {
+    appBackground.classList.add("thunderstormBackground");
+    searchCityButton.classList.add("thunderstormBoxTheme");
+    dateLine.classList.add("thunderstormTimeAndDateTheme");
+    timeLine.classList.add("thunderstormTimeAndDateTheme");
+    cityBox.classList.add("thunderstormBoxTheme");
+    dayContainers.classList.add("thunderstormBoxTheme");
+  } else if ((weatherConditionResponse = "snow")) {
+    appBackground.classList.add("snowBackground");
+    searchCityButton.classList.add("snowBoxAndSearchCityButtonTheme");
+    dateLine.classList.add("date");
+    timeLine.classList.add("time");
+    cityBox.classList.add("snowBoxAndSearchCityButtonTheme");
+    dayContainers.classList.add("snowBoxAndSearchCityButtonTheme");
+  } else if ((weatherConditionResponse = "mist")) {
+    appBackground.classList.add("mistBackground");
+    searchCityButton.classList.add("mistSearchCity");
+    dateLine.classList.add("date");
+    timeLine.classList.add("time");
+    cityBox.classList.add("cityDetailsContainer");
+    dayContainers.classList.add("daycontainer");
+  } else if ((weatherConditionResponse = "clouds")) {
+    appBackground.classList.add("cloudySkyBackground");
+    searchCityButton.classList.add("cloudySkySearchCity");
+    dateLine.classList.add("date");
+    timeLine.classList.add("time");
+    cityBox.classList.add("cloudySkyTheme");
+    dayContainers.classList.add("cloudySkyTheme");
+  } else {
+    appBackground.classList.add("defaultWeatherBackground");
+    searchCityButton.classList.add("searchCityButton");
+    dateLine.classList.add("date");
+    timeLine.classList.add("time");
+    cityBox.classList.add("cityDetailsContainer");
+    dayContainers.classList.add("daycontainer");
+  }
+}
+
 function showWeather(response) {
+  console.log(response.data.weather[0].main);
   console.log(response);
   let currentCity = document.querySelector("h1");
   currentCity.innerHTML = response.data.name;
@@ -8,6 +65,7 @@ function showWeather(response) {
   currentHumidity.innerHTML = Math.round(response.data.main.humidity);
   let currentWind = document.querySelector("#wind");
   currentWind.innerHTML = Math.round(response.data.wind.speed);
+  changeWeatherTheme(response);
 }
 
 function showPosition(position) {
@@ -22,6 +80,7 @@ function showPosition(position) {
 }
 
 function getWeather(response) {
+  console.log(response);
   let temperatureResult = document.querySelector("#temperature");
   temperatureResult.innerHTML = Math.round(response.data.main.temp);
   let humidityResult = document.querySelector("#humidity");
@@ -63,7 +122,7 @@ function getCurrentDate(now) {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
   ];
   let day = days[currentDay];
   let months = [
@@ -78,7 +137,7 @@ function getCurrentDate(now) {
     "September",
     "October",
     "November",
-    "December"
+    "December",
   ];
   let currentMonth = months[month];
 
@@ -115,7 +174,7 @@ function getCurrentTime(now) {
     "8",
     "9",
     "10",
-    "11"
+    "11",
   ];
 
   let currentHour = hours[hour];
