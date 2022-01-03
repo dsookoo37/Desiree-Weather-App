@@ -31,9 +31,9 @@ h2 {
   margin-top: 50px;
 }
 .temperatureUnits {
-  font-size: 20px;
+  font-size: 16px;
   position: relative;
-  left: -40px;
+  left: -25px;
   top: -5px;
   padding: 0px;
 }
