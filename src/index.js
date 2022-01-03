@@ -3,54 +3,74 @@ function changeWeatherTheme(response) {
   let dateLine = document.querySelector("#current-date");
   let timeLine = document.querySelector("#time");
   let cityBox = document.querySelector("#city-details-box");
-  let dayContainers = document.querySelector("#day-containers");
+  let dayOne = document.querySelector("#day-one");
+  let dayTwo = document.querySelector("#day-two");
+  let dayThree = document.querySelector("#day-three");
+  let dayFour = document.querySelector("#day-four");
+  let dayFive = document.querySelector("#day-five");
   let appBackground = document.querySelector("#weather-app-container");
-  weatherConditionResponse = response.data.weather[0].main;
-  weatherConditionResponse.toLowerCase();
+  appBackground.classList =
+    "card weather-app-container defaultWeatherBackground";
+  searchCityButton.classList = "searchCityButton";
+  timeLine.classList = "time";
+  cityBox.classList = "cityDetailsContainer";
+  dateLine.classList = "date";
+  dayOne.classList = "col daycontainer";
+  dayTwo.classList = "col daycontainer";
+  dayThree.classList = "col daycontainer";
+  dayFour.classList = "col daycontainer";
+  dayFive.classList = "col daycontainer";
+  //let weatherConditionResponse = response.data.weather[0].main;
+  //console.log(weatherConditionsResponse);
+  //weatherConditionResponse.toLowerCase();
   if (
-    (weatherConditionResponse = "drizzle") ||
-    (weatherConditionResponse = "rain")
+    response.data.weather[0].main === "Drizzle" ||
+    response.data.weather[0].main === "Rain"
   ) {
     appBackground.classList.add("rainBackground");
     searchCityButton.classList.add("rainBoxAndSeachCityButtonTheme");
-    dateLine.classList.add("date");
-    timeLine.classList.add("time");
     cityBox.classList.add("rainBoxAndSeachCityButtonTheme");
-  } else if ((weatherConditionResponse = "thunderstorm")) {
+    dayOne.classList.add("rainBoxAndSeachCityButtonTheme");
+    dayTwo.classList.add("rainBoxAndSeachCityButtonTheme");
+    dayThree.classList.add("rainBoxAndSeachCityButtonTheme");
+    dayFour.classList.add("rainBoxAndSeachCityButtonTheme");
+    dayFive.classList.add("rainBoxAndSeachCityButtonTheme");
+  } else if (response.data.weather[0].main === "Thunderstorm") {
     appBackground.classList.add("thunderstormBackground");
     searchCityButton.classList.add("thunderstormBoxTheme");
     dateLine.classList.add("thunderstormTimeAndDateTheme");
     timeLine.classList.add("thunderstormTimeAndDateTheme");
     cityBox.classList.add("thunderstormBoxTheme");
-    dayContainers.classList.add("thunderstormBoxTheme");
-  } else if ((weatherConditionResponse = "snow")) {
+    dayOne.classList.add("thunderstormBoxTheme");
+    dayTwo.classList.add("thunderstormBoxTheme");
+    dayThree.classList.add("thunderstormBoxTheme");
+    dayFour.classList.add("thunderstormBoxTheme");
+    dayFive.classList.add("thunderstormBoxTheme");
+  } else if (response.data.weather[0].main === "Snow") {
+    debugger;
     appBackground.classList.add("snowBackground");
     searchCityButton.classList.add("snowBoxAndSearchCityButtonTheme");
-    dateLine.classList.add("date");
-    timeLine.classList.add("time");
     cityBox.classList.add("snowBoxAndSearchCityButtonTheme");
-    dayContainers.classList.add("snowBoxAndSearchCityButtonTheme");
-  } else if ((weatherConditionResponse = "mist")) {
+    dayOne.classList.add("snowBoxAndSearchCityButtonTheme");
+    dayTwo.classList.add("snowBoxAndSearchCityButtonTheme");
+    dayThree.classList.add("snowBoxAndSearchCityButtonTheme");
+    dayFour.classList.add("snowBoxAndSearchCityButtonTheme");
+    dayFive.classList.add("snowBoxAndSearchCityButtonTheme");
+  } else if (response.data.weather[0].main === "Mist") {
     appBackground.classList.add("mistBackground");
     searchCityButton.classList.add("mistSearchCity");
-    dateLine.classList.add("date");
-    timeLine.classList.add("time");
     cityBox.classList.add("cityDetailsContainer");
-    dayContainers.classList.add("daycontainer");
-  } else if ((weatherConditionResponse = "clouds")) {
+  } else if (response.data.weather[0].main === "Clouds") {
     appBackground.classList.add("cloudySkyBackground");
     searchCityButton.classList.add("cloudySkySearchCity");
-    dateLine.classList.add("date");
-    timeLine.classList.add("time");
     cityBox.classList.add("cloudySkyTheme");
-    dayContainers.classList.add("cloudySkyTheme");
+    dayOne.classList.add("cloudySkyTheme");
+    dayTwo.classList.add("cloudySkyTheme");
+    dayThree.classList.add("cloudySkyTheme");
+    dayFour.classList.add("cloudySkyTheme");
+    dayFive.classList.add("cloudySkyTheme");
   } else {
     appBackground.classList.add("defaultWeatherBackground");
-    searchCityButton.classList.add("searchCityButton");
-    dateLine.classList.add("date");
-    timeLine.classList.add("time");
-    cityBox.classList.add("cityDetailsContainer");
-    dayContainers.classList.add("daycontainer");
   }
 }
 
@@ -87,6 +107,7 @@ function getWeather(response) {
   humidityResult.innerHTML = Math.round(response.data.main.humidity);
   let windResult = document.querySelector("#wind");
   windResult.innerHTML = Math.round(response.data.wind.speed);
+  changeWeatherTheme(response);
 }
 
 function searchCity(event) {
