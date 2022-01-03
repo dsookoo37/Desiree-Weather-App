@@ -47,7 +47,6 @@ function changeWeatherTheme(response) {
     dayFour.classList.add("thunderstormBoxTheme");
     dayFive.classList.add("thunderstormBoxTheme");
   } else if (response.data.weather[0].main === "Snow") {
-    debugger;
     appBackground.classList.add("snowBackground");
     searchCityButton.classList.add("snowBoxAndSearchCityButtonTheme");
     cityBox.classList.add("snowBoxAndSearchCityButtonTheme");
@@ -75,7 +74,7 @@ function changeWeatherTheme(response) {
 }
 
 function showPosition(position) {
-  console.log(position);
+  //console.log(position);
   let longitude = position.coords.longitude;
   let latitude = position.coords.latitude;
   let units = "imperial";
@@ -86,7 +85,7 @@ function showPosition(position) {
 }
 
 function getWeather(response) {
-  console.log(response);
+  //console.log(response);
   let currentCity = document.querySelector("h1");
   currentCity.innerHTML = response.data.name;
   let temperatureResult = document.querySelector("#temperature");
@@ -97,6 +96,11 @@ function getWeather(response) {
   windResult.innerHTML = Math.round(response.data.wind.speed);
   let descriptionElement = document.querySelector("#weather-description");
   descriptionElement.innerHTML = response.data.weather[0].description;
+  let weatherIconElement = document.querySelector("#weather-icon");
+  weatherIconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
   changeWeatherTheme(response);
 }
 
