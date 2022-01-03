@@ -89,6 +89,7 @@ function getWeather(response) {
   let currentCity = document.querySelector("h1");
   currentCity.innerHTML = response.data.name;
   let temperatureResult = document.querySelector("#temperature");
+  console.log(temperatureResult);
   temperatureResult.innerHTML = Math.round(response.data.main.temp);
   let humidityResult = document.querySelector("#humidity");
   humidityResult.innerHTML = Math.round(response.data.main.humidity);
@@ -101,6 +102,8 @@ function getWeather(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
+  fahrenheitTemperature = response.data.main.temp;
   changeWeatherTheme(response);
 }
 
@@ -201,18 +204,24 @@ function getCurrentTime(now) {
 
 function fahrenheitToCelsius(event) {
   event.preventDefault();
-  //let temp = Number(temperature.innerHTML);
-  temperature.innerHTML = 16;
+  let temperature = document.querySelector("#temperature");
+  let celsiusTemp = ((fahrenheitTemperature - 32) * 5) / 9;
+  celsiusTemp = Math.round(celsiusTemp);
+  temperature.innerHTML = celsiusTemp;
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
 }
 
 function celsiusToFahrenheit(event) {
   event.preventDefault();
-  //let temp = Number(temperature.innerHTML);
-  temperature.innerHTML = 60;
+  let temperature = document.querySelector("temperature");
+  temperature.innerHTML = Math.round(fahrenheitTemperature);
+  console.log(fahrenheitTemperature);
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
 }
 
-let form = document.querySelector("#city-search-form");
-form.addEventListener("submit", searchCity);
+let fahrenheitTemperature = null;
 
 let now = new Date();
 
@@ -228,5 +237,8 @@ let fahrenheitLink = document.querySelector("#fahrenheit");
 
 celsiusLink.addEventListener("click", fahrenheitToCelsius);
 fahrenheitLink.addEventListener("click", celsiusToFahrenheit);
+
+let form = document.querySelector("#city-search-form");
+form.addEventListener("submit", searchCity);
 
 navigator.geolocation.getCurrentPosition(showPosition);

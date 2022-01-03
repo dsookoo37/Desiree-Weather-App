@@ -168,3 +168,12 @@ h2 {
   background-color: rgba(74, 116, 133, 0.5);
   color: white;
 }
+
+.active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+.active:hover {
+  color: black;
+}
