@@ -39,6 +39,8 @@ function mistyWeather() {
 function cloudyWeather() {
   appBackground.classList.add("cloudySkyBackground");
   searchCityButton.classList.add("cloudySkySearchCity");
+  dateLine.classList.add("cloudySkyTimeAndDate");
+  timeLine.classList.add("cloudySkyTimeAndDate");
   cityBox.classList.add("cloudySkyTheme");
   dayOne.classList.add("cloudySkyTheme");
   dayTwo.classList.add("cloudySkyTheme");

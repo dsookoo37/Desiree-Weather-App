@@ -117,7 +117,7 @@ h2 {
   margin: 0 auto;
 }
 .cloudySkyBackground {
-  background-image: url("../images/cloudysky.png");
+  background-image: url("../images/cloudysky.jpg");
 }
 .cloudySkyTheme {
   background-color: rgb(184, 179, 204, 0.5);
@@ -125,12 +125,16 @@ h2 {
 }
 .cloudySkySearchCity {
   background-color: rgba(164, 195, 216, 0.4);
-  color: #000;
+  color: white;
+}
+.cloudySkyTimeAndDate {
+  color: white;
 }
 .citySearchBar {
   background-color: rgb(255, 255, 255, 0.7);
-  color: #000;
+  color: black;
 }
+
 .mistBackground {
   background-image: url("../images/mist.jpg");
 }
