@@ -79,7 +79,6 @@ function handleWeather(response) {
 }
 
 function showPosition(position) {
-  //console.log(position);
   let longitude = position.coords.longitude;
   let latitude = position.coords.latitude;
   let units = "imperial";
@@ -185,6 +184,27 @@ function getCurrentTime(now) {
   return `${currentHour}:${minutes} ${amPm()}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Sat", "Sun", "Mon", "Tues", "Wed"];
+
+  let forecastHTML = `<div class="row allDays">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col daycontainer">
+							<strong> ${day} </strong> 
+							</br>
+							<span> <i class="fas fa-sun"></i>
+								</br>
+								32°/60°
+							</span> 
+						</div>
+						`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 function fahrenheitToCelsius(event) {
   event.preventDefault();
   let celsiusTemp = ((fahrenheitTemperature - 32) * 5) / 9;
@@ -227,3 +247,4 @@ let form = document.querySelector(".city-search-form");
 form.addEventListener("submit", searchCity);
 
 navigator.geolocation.getCurrentPosition(showPosition);
+displayForecast();
