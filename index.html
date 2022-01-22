@@ -18,32 +18,32 @@
   </head>
   <body>
     <div class="container">
-		<div id = "weather-app-container" class="card weather-app-container defaultWeatherBackground">
+		<div class="card weather-app-container defaultWeatherBackground">
         	<div class="card-body">
-				<form id = "city-search-form"> 
+				<form class = "city-search-form"> 
 						<input id = "city-input" class="citySearchBar" type="search" autocomplete = "off" placeholder = "Enter a city"  >
-						<input id= "search-city-button" type= "submit" value = "Search" class = "searchCityButton">
-						<span class = "date" id ="current-date">
+						<input type= "submit" value = "Search" class = "searchCityButton">
+						<span class = "date">
 							<p>October 17th, 2021</p></span>
 				</form>
-					<div id = "time" class = "time">
+					<div class = "time">
 						<p id = "current-time">3:14 
 							<span id = "time-of-day" >pm </span>
 						</p>
 					</div>
-					<div id = "city-details-box" class = "cityDetailsContainer">
+					<div class = "cityDetailsContainer">
 						<h1>New York</h1>
 						<h2>
 							<span class = "currentTemp">
 								<span id = "temperature">60</span>°
 							</span> 
 							<span class = "temperatureUnits">
-								<a href="#" id= "fahrenheit"class = "active">F</a> | <a href="#"id = "celsius">C</a>
+								<a href="#" id= "fahrenheit" class = "active">F</a> | <a href="#"id = "celsius">C</a>
 							</span>
 							</br>
 							<img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" id = "weather-icon">
 						</h2>
-						<div id = "weather-details" class = "displayWeatherDetails">
+						<div class = "displayWeatherDetails">
 							<p> Humidity: 
 								<span id = "humidity"> 30</span>% 
 								</br>
@@ -54,7 +54,7 @@
 						</div>
 					</div>
 					<div class="row allDays">
-						<div id = "day-one" class="col daycontainer">
+						<div class="col daycontainer">
 							<strong>	Mon </strong> 
 							</br>
 							<span> <i class="fas fa-sun"></i>
@@ -62,21 +62,21 @@
 								32°/60°
 							</span> 
 						</div>
-						<div id = "day-two" class="col daycontainer"> 
+						<div  class="col daycontainer"> 
 							<strong> Tue </strong> </br>
 							<span> <i class="fas fa-sun"></i>
 								</br>
 								32°/60°
 							</span>
 						</div>
-						<div id= "day-three" class="col daycontainer"> 
+						<div  class="col daycontainer"> 
 							<strong>Wed </strong> </br>
 							<span> <i class="fas fa-sun"></i> 
 								</br>
 								32°/60°
 							</span>
 						</div>
-						<div id = "day-four" class="col daycontainer"> 
+						<div  class="col daycontainer"> 
 							<strong>Thu </strong>
 								</br>
 							<span> <i class="fas fa-sun"></i>
@@ -84,7 +84,7 @@
 								32°/60°
 							</span> 
 						</div>
-						<div id = "day-five" class="col daycontainer"> <strong>Fri </strong> </br>
+						<div  class="col daycontainer"> <strong>Fri </strong> </br>
 							<span> <i class="fas fa-sun"></i>
 								</br>
 								32°/60°

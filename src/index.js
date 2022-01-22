@@ -1,79 +1,36 @@
 function rainyWeather() {
   appBackground.classList.add("rainBackground");
-  searchCityButton.classList.add("rainBoxAndSeachCityButtonTheme");
-  cityBox.classList.add("rainBoxAndSeachCityButtonTheme");
-  dayOne.classList.add("rainBoxAndSeachCityButtonTheme");
-  dayTwo.classList.add("rainBoxAndSeachCityButtonTheme");
-  dayThree.classList.add("rainBoxAndSeachCityButtonTheme");
-  dayFour.classList.add("rainBoxAndSeachCityButtonTheme");
-  dayFive.classList.add("rainBoxAndSeachCityButtonTheme");
 }
 function thunderstormWeather() {
   appBackground.classList.add("thunderstormBackground");
-  searchCityButton.classList.add("thunderstormBoxTheme");
-  dateLine.classList.add("thunderstormTimeAndDateTheme");
-  timeLine.classList.add("thunderstormTimeAndDateTheme");
-  cityBox.classList.add("thunderstormBoxTheme");
-  dayOne.classList.add("thunderstormBoxTheme");
-  dayTwo.classList.add("thunderstormBoxTheme");
-  dayThree.classList.add("thunderstormBoxTheme");
-  dayFour.classList.add("thunderstormBoxTheme");
-  dayFive.classList.add("thunderstormBoxTheme");
 }
 function snowyWeather() {
   appBackground.classList.add("snowBackground");
-  searchCityButton.classList.add("snowBoxAndSearchCityButtonTheme");
-  cityBox.classList.add("snowBoxAndSearchCityButtonTheme");
-  dayOne.classList.add("snowBoxAndSearchCityButtonTheme");
-  dayTwo.classList.add("snowBoxAndSearchCityButtonTheme");
-  dayThree.classList.add("snowBoxAndSearchCityButtonTheme");
-  dayFour.classList.add("snowBoxAndSearchCityButtonTheme");
-  dayFive.classList.add("snowBoxAndSearchCityButtonTheme");
 }
+
 function mistyWeather() {
   appBackground.classList.add("mistBackground");
-  searchCityButton.classList.add("mistSearchCity");
-  cityBox.classList.add("cityDetailsContainer");
 }
 
 function cloudyWeather() {
   appBackground.classList.add("cloudySkyBackground");
-  searchCityButton.classList.add("cloudySkySearchCity");
-  dateLine.classList.add("cloudySkyTimeAndDate");
-  timeLine.classList.add("cloudySkyTimeAndDate");
-  cityBox.classList.add("cloudySkyTheme");
-  dayOne.classList.add("cloudySkyTheme");
-  dayTwo.classList.add("cloudySkyTheme");
-  dayThree.classList.add("cloudySkyTheme");
-  dayFour.classList.add("cloudySkyTheme");
-  dayFive.classList.add("cloudySkyTheme");
 }
 
 function changeWeatherTheme(response) {
   appBackground.classList =
     "card weather-app-container defaultWeatherBackground";
-  searchCityButton.classList = "searchCityButton";
-  timeLine.classList = "time";
-  cityBox.classList = "cityDetailsContainer";
-  dateLine.classList = "date";
-  dayOne.classList = "col daycontainer";
-  dayTwo.classList = "col daycontainer";
-  dayThree.classList = "col daycontainer";
-  dayFour.classList = "col daycontainer";
-  dayFive.classList = "col daycontainer";
 
-  if (
-    response.data.weather[0].main === "Drizzle" ||
-    response.data.weather[0].main === "Rain"
-  ) {
+  let currentDescription = response.data.weather[0].main;
+
+  if (currentDescription === "Drizzle" || currentDescription === "Rain") {
     rainyWeather();
-  } else if (response.data.weather[0].main === "Thunderstorm") {
+  } else if (currentDescription === "Thunderstorm") {
     thunderstormWeather();
-  } else if (response.data.weather[0].main === "Snow") {
+  } else if (currentDescription === "Snow") {
     snowyWeather();
-  } else if (response.data.weather[0].main === "Mist") {
+  } else if (currentDescription === "Mist") {
     mistyWeather();
-  } else if (response.data.weather[0].main === "Clouds") {
+  } else if (currentDescription === "Clouds") {
     cloudyWeather();
   } else {
     appBackground.classList.add("defaultWeatherBackground");
@@ -236,23 +193,16 @@ function celsiusToFahrenheit(event) {
 
 let fahrenheitTemperature = null;
 
-let searchCityButton = document.querySelector("#search-city-button");
-let dateLine = document.querySelector("#current-date");
-let timeLine = document.querySelector("#time");
-let cityBox = document.querySelector("#city-details-box");
-let dayOne = document.querySelector("#day-one");
-let dayTwo = document.querySelector("#day-two");
-let dayThree = document.querySelector("#day-three");
-let dayFour = document.querySelector("#day-four");
-let dayFive = document.querySelector("#day-five");
-let appBackground = document.querySelector("#weather-app-container");
+let currentTheme = null;
+
+let appBackground = document.querySelector(".weather-app-container");
 
 let now = new Date();
 
-let currentFullDate = document.querySelector("#current-date");
+let currentFullDate = document.querySelector(".date");
 currentFullDate.innerHTML = getCurrentDate(now);
 
-let currentTime = document.querySelector("#current-time");
+let currentTime = document.querySelector(".time");
 currentTime.innerHTML = getCurrentTime(now);
 
 let temperature = document.querySelector("#temperature");
@@ -262,7 +212,7 @@ let fahrenheitLink = document.querySelector("#fahrenheit");
 celsiusLink.addEventListener("click", fahrenheitToCelsius);
 fahrenheitLink.addEventListener("click", celsiusToFahrenheit);
 
-let form = document.querySelector("#city-search-form");
+let form = document.querySelector(".city-search-form");
 form.addEventListener("submit", searchCity);
 
 navigator.geolocation.getCurrentPosition(showPosition);
