@@ -1,25 +1,36 @@
 function rainyWeather() {
-  appBackground.classList.add("rainBackground");
+  appBackground.classList.remove(currentTheme);
+  currentTheme = "rainBackground";
+  appBackground.classList.add(currentTheme);
 }
 function thunderstormWeather() {
-  appBackground.classList.add("thunderstormBackground");
+  appBackground.classList.remove(currentTheme);
+  currentTheme = "thunderstormBackground";
+  appBackground.classList.add(currentTheme);
 }
 function snowyWeather() {
-  appBackground.classList.add("snowBackground");
+  appBackground.classList.remove(currentTheme);
+  currentTheme = "snowBackground";
+  appBackground.classList.add(currentTheme);
 }
 
 function mistyWeather() {
-  appBackground.classList.add("mistBackground");
+  appBackground.classList.remove(currentTheme);
+  currentTheme = "mistBackground";
+  appBackground.classList.add(currentTheme);
 }
 
 function cloudyWeather() {
-  appBackground.classList.add("cloudySkyBackground");
+  appBackground.classList.remove(currentTheme);
+  currentTheme = "cloudySkyBackground";
+  appBackground.classList.add(currentTheme);
 }
-
+function defaultBackground() {
+  appBackground.classList.remove(currentTheme);
+  currentTheme = "defaultWeatherBackground";
+  appBackground.classList.add(currentTheme);
+}
 function changeWeatherTheme(response) {
-  appBackground.classList =
-    "card weather-app-container defaultWeatherBackground";
-
   let currentDescription = response.data.weather[0].main;
 
   if (currentDescription === "Drizzle" || currentDescription === "Rain") {
@@ -33,7 +44,7 @@ function changeWeatherTheme(response) {
   } else if (currentDescription === "Clouds") {
     cloudyWeather();
   } else {
-    appBackground.classList.add("defaultWeatherBackground");
+    defaultBackground();
   }
 }
 
