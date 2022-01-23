@@ -202,7 +202,6 @@ function displayForecast(response) {
   let forecast = response.data.daily;
   let iconNumber = 0;
   let forecastElement = document.querySelector("#forecast");
-  let days = ["Sat", "Sun", "Mon", "Tues", "Wed"];
 
   let forecastHTML = `<div class="row allDays">`;
   forecast.forEach(function (forecastDay, index) {
