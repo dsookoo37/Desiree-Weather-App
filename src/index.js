@@ -194,25 +194,37 @@ function getCurrentTime(now) {
   }
   return `${currentHour}:${minutes} ${amPm()}`;
 }
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
+  return days[day];
+}
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
+  let iconNumber = 0;
+  console.log(forecast);
   let forecastElement = document.querySelector("#forecast");
   let days = ["Sat", "Sun", "Mon", "Tues", "Wed"];
 
   let forecastHTML = `<div class="row allDays">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col daycontainer">
-							<strong> ${day} </strong> 
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML += `<div class="col daycontainer">
+							<strong> ${formatDay(forecastDay.dt)} </strong> 
 							</br>
-							<span> <i class="fas fa-sun"></i>
+              <img src="https://openweathermap.org/img/wn/${
+                forecast[iconNumber].weather[0].icon
+              }@2x.png" alt="" width = "25"/>
 								</br>
-								32°/60°
+							<span> 
+								${Math.round(forecastDay.temp.max)}°/${Math.round(forecastDay.temp.min)}°
 							</span> 
 						</div>
 						`;
+      iconNumber += 1;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
