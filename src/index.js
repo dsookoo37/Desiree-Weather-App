@@ -110,7 +110,7 @@ function searchCity(event) {
 
 function amPm() {
   let amPm = now.getHours();
-  if (amPm <= 12) {
+  if (amPm < 12) {
     return "am";
   } else {
     return "pm";
@@ -221,7 +221,7 @@ function displayForecast(response) {
       iconNumber += 1;
     }
   });
-  forecastHTML = forecastHTML + `</div>`;
+  forecastHTML += `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
