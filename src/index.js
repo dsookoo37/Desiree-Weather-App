@@ -1,34 +1,34 @@
 function rainyWeather() {
-  appBackground.classList.remove(currentTheme);
-  currentTheme = "rainBackground";
-  appBackground.classList.add(currentTheme);
+  appBackground.classList.remove(currentWeatherTheme);
+  currentWeatherTheme = "rainBackground";
+  appBackground.classList.add(currentWeatherTheme);
 }
 function thunderstormWeather() {
-  appBackground.classList.remove(currentTheme);
-  currentTheme = "thunderstormBackground";
-  appBackground.classList.add(currentTheme);
+  appBackground.classList.remove(currentWeatherTheme);
+  currentWeatherTheme = "thunderstormBackground";
+  appBackground.classList.add(currentWeatherTheme);
 }
 function snowyWeather() {
-  appBackground.classList.remove(currentTheme);
-  currentTheme = "snowBackground";
-  appBackground.classList.add(currentTheme);
+  appBackground.classList.remove(currentWeatherTheme);
+  currentWeatherTheme = "snowBackground";
+  appBackground.classList.add(currentWeatherTheme);
 }
 
 function mistyWeather() {
-  appBackground.classList.remove(currentTheme);
-  currentTheme = "mistBackground";
-  appBackground.classList.add(currentTheme);
+  appBackground.classList.remove(currentWeatherTheme);
+  currentWeatherTheme = "mistBackground";
+  appBackground.classList.add(currentWeatherTheme);
 }
 
 function cloudyWeather() {
-  appBackground.classList.remove(currentTheme);
-  currentTheme = "cloudySkyBackground";
-  appBackground.classList.add(currentTheme);
+  appBackground.classList.remove(currentWeatherTheme);
+  currentWeatherTheme = "cloudySkyBackground";
+  appBackground.classList.add(currentWeatherTheme);
 }
 function defaultBackground() {
-  appBackground.classList.remove(currentTheme);
-  currentTheme = "defaultWeatherBackground";
-  appBackground.classList.add(currentTheme);
+  appBackground.classList.remove(currentWeatherTheme);
+  currentWeatherTheme = "defaultWeatherBackground";
+  appBackground.classList.add(currentWeatherTheme);
 }
 function changeWeatherTheme(response) {
   let currentDescription = response.data.weather[0].main;
@@ -44,15 +44,25 @@ function changeWeatherTheme(response) {
   } else if (currentDescription === "Clouds") {
     cloudyWeather();
   } else {
-    defaultBackground();
+    defaultWeatherBackground();
   }
 }
 
+function getApiKey() {
+  return "c9ea812441cd58019765e15b7f2eb11f";
+}
+
+function getApiUnits() {
+  return "imperial";
+}
+
 function getForecast(coordinates) {
-  let apiKey = `c9ea812441cd58019765e15b7f2eb11f`;
-  let units = `imperial`;
   let exclude = "current,minutely,hourly,alerts";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=${exclude}&appid=${apiKey}&units=${units}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${
+    coordinates.lat
+  }&lon=${
+    coordinates.lon
+  }&exclude=${exclude}&appid=${getApiKey()}&units=${getApiUnits()}`;
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -89,10 +99,8 @@ function handleWeather(response) {
 function showPosition(position) {
   let longitude = position.coords.longitude;
   let latitude = position.coords.latitude;
-  let units = "imperial";
-  let apiKey = "c9ea812441cd58019765e15b7f2eb11f";
-  let apiEndpoint = "api.openweathermap.org/data/2.5/weather?";
-  let apiUrl = `https://${apiEndpoint}lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
+  let apiUrl = `${apiEndpoint}lat=${latitude}&lon=${longitude}&appid=${getApiKey()}&units=${getApiUnits()}`;
   axios.get(apiUrl).then(handleWeather);
 }
 
@@ -101,10 +109,10 @@ function searchCity(event) {
   let cityInput = document.querySelector("#city-input");
   let cityDisplay = document.querySelector("h1");
   cityDisplay.innerHTML = cityInput.value;
-  let units = "imperial";
-  let apiKey = "c9ea812441cd58019765e15b7f2eb11f";
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?q=";
-  let apiUrl = `${apiEndpoint}${cityInput.value}&appid=${apiKey}&units=${units}`;
+  let apiUrl = `${apiEndpoint}${
+    cityInput.value
+  }&appid=${getApiKey()}&units=${getApiUnits()}`;
   axios.get(apiUrl).then(handleWeather);
 }
 
@@ -225,17 +233,21 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-let currentTheme = null;
+function displayCurrentDate() {
+  let currentFullDate = document.querySelector(".date");
+  currentFullDate.innerHTML = getCurrentDate(now);
+}
+
+function displayCurrentTime() {
+  let currentTime = document.querySelector(".time");
+  currentTime.innerHTML = getCurrentTime(now);
+}
+
+let currentWeatherTheme = null;
 
 let appBackground = document.querySelector(".weather-app-container");
 
 let now = new Date();
-
-let currentFullDate = document.querySelector(".date");
-currentFullDate.innerHTML = getCurrentDate(now);
-
-let currentTime = document.querySelector(".time");
-currentTime.innerHTML = getCurrentTime(now);
 
 let temperature = document.querySelector("#temperature");
 
@@ -243,4 +255,7 @@ let form = document.querySelector(".city-search-form");
 form.addEventListener("submit", searchCity);
 
 navigator.geolocation.getCurrentPosition(showPosition);
+
+displayCurrentTime();
+displayCurrentDate();
 displayForecast();
