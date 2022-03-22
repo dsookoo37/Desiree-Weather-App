@@ -22,6 +22,13 @@ h2 {
   font-size: 70px;
 }
 
+.miniDescription {
+  font-size: 12px;
+  text-align: center;
+}
+.miniTemp {
+  font-size: 14px;
+}
 #weather-description {
   text-transform: capitalize;
 }
@@ -90,7 +97,7 @@ h2 {
 .weather-app-container {
   margin: 100px;
   width: 500px;
-  height: 490px;
+  height: 515px;
   border-radius: 10px;
 }
 .citySearchBar {

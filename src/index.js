@@ -208,21 +208,28 @@ function formatDay(timestamp) {
 }
 function displayForecast(response) {
   let forecast = response.data.daily;
+  console.log(response);
   let iconNumber = 0;
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row allDays">`;
+
   forecast.forEach(function (forecastDay, index) {
     if (index < 5) {
       forecastHTML += `<div class="col daycontainer">
 							<strong> ${formatDay(forecastDay.dt)} </strong> 
-							</br>
+							</br> 
               <img src="https://openweathermap.org/img/wn/${
                 forecast[iconNumber].weather[0].icon
               }@2x.png" alt="" width = "25"/>
 								</br>
-							<span> 
-								${Math.round(forecastDay.temp.max)}°/${Math.round(forecastDay.temp.min)}°
+                <span class= "miniDescription">${
+                  forecast[iconNumber].weather[0].main
+                }</span>
+							<span class = "miniTemp"> 
+								<strong>${Math.round(forecastDay.temp.max)}°</strong>/${Math.round(
+        forecastDay.temp.min
+      )}°
 							</span> 
 						</div>
 						`;
